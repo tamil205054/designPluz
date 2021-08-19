@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^register/([0-9a-zA-Z_-]+) register.php?ref_id=$1 [L,QSA,NC]
+RewriteRule ^([^\.]+)$ $1.php [NC,L] 	
